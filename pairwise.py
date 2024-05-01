@@ -24,17 +24,10 @@ def p_alignment(seq1, seq2, ):
     #     print()
 
     #set score
-        #spaghetti dinner, bon appetite. confusion is x being vertical sequence 1 and y being horizontal sequence 2
-        #this conditional looks horrible too, refactor later, its 2am
-    if len(seq1) > len(seq2):
-        for x in range(len(matrix[0])):
-            for y in range(len(matrix)):
-                score = max(score, matrix[x][y+1])
-    else:
-        for x in range(len(matrix[0])):
-            for y in range(len(matrix)):
-                score = max(score, matrix[y][x])
-    
+    #spaghetti dinner, bon appetite.
+    for x in range(len(matrix)):
+        for y in range(len(matrix[0])):
+                score = max(score, matrix[x][y])
 
     #set score location
     for x in range(len(matrix)):
@@ -76,49 +69,45 @@ def p_alignment(seq1, seq2, ):
 
 
     print(f"Score: {score}")
-    print(f"Optimal X Alignment: {optimalAlignment[0]}")
-    print(f"Optimal Y Alignment: {optimalAlignment[1]}")
-
-    #print matrix y sequence
-    for i in range(len(seq2)):
-        if i == 0:
-            print('   ', end=' ')
-        print(seq2[i], end=' ')
+    if len(optimalAlignment) == 0:
+        print("No optimal alignment found")
+        return
+    print(f"Optimal X Alignment: {''.join(optimalAlignment[0]).upper()}")
+    print(f"Optimal Y Alignment: {''.join(optimalAlignment[1]).upper()}")
     print()
 
-    #print matrix with x sequence in the first column moved downward by 3
-    for x in range(len(matrix)):
-        if x == 0:
-            print(' ', end=' ')
-        if x > 0:
-            print(seq1[x-1], end=' ')
-        for y in range(len(matrix[x])):
-            print(matrix[x][y], end=' ')
-        print()
+    #print matrix y sequence
+    # for i in range(len(seq2)):
+    #     if i == 0:
+    #         print('   ', end=' ')
+    #     print(seq2[i], end=' ')
+    # print()
 
-print("Pairwise Local Alignment Tool\nValid characters: A, T, C, G\n\n")
+    #print matrix with x sequence in the first column moved downward by 3
+    # for x in range(len(matrix)):
+    #     if x == 0:
+    #         print(' ', end=' ')
+    #     if x > 0:
+    #         print(seq1[x-1], end=' ')
+    #     for y in range(len(matrix[x])):
+    #         print(matrix[x][y], end=' ')
+    #     print()
+    # print()
+
+print("Optimal PairwiseLocal Alignment Tool\n")
 #sequence1 = input("Enter the first sequence: ").upper()
 #sequence2 = input("Enter the second sequence: ").upper()
-print
-seq1 = 'AAT'
-seq2 = 'CAAG'
 
-seq3 = 'SALTY'
-seq4 = 'PLATE'
+#tests
+p_alignment('AAT', 'CAAG')
+p_alignment('SALTY', 'PLATE')
+p_alignment('ISALIGNED', 'THISLINE')
+p_alignment('ARE', 'REST')
+p_alignment('A', 'A')
+p_alignment('abcfghinopqrstuvwghijklmnopqrstuvwzyklmnopqrstuvwzyz', 'abcdejklmnopqyzabcdefghijklmnopqr')
+p_alignment('l;kqwercmvn.a,jemfhoqialksdfnal.skdfjl292830lkajsd.v,zmxlaiula', 'a1234098sldkjnaweroqpiuhas;f;asdr')
+p_alignment('a        a', 'a       a')
 
-seq5 = 'ISALIGNED'
-seq6 = 'THISLINE'
-
-seq7 = 'ARE'
-seq8 = 'REST'
-
-p_alignment(seq1, seq2)
-print()
-p_alignment(seq3, seq4)
-print()
-p_alignment(seq6, seq5)
-print()
-p_alignment(seq7, seq8)
 
 
 
