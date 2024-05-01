@@ -6,7 +6,7 @@ In bioinformatics, pairwise alignment is a method used to compare two sequences 
 
 1. [Rules](#introduction)
 2. [Installation and Usage](#installation-and-usage)
-3. [Testing and matrix visualization](#testing)
+3. [Testing and matrix visualization](#testing-and-matrix-visualization)
 4. [Note about gaps](#note-about-gaps)
 
 ## Rules
