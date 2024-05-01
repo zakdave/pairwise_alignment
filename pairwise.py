@@ -7,7 +7,7 @@ def p_alignment(seq1, seq2, ):
     # initialize matrix
     matrix = [[0 for i in range(len(seq2)+1)] for j in range(len(seq1)+1)] # +1 because alignment can start at index 0
     
-    #calculate the scores for each cell in the matrix
+    #calculate a score for each cell in the matrix
     for x in range(len(seq1)):
         for y in range(len(seq2)):
             
@@ -24,15 +24,21 @@ def p_alignment(seq1, seq2, ):
     #     print()
 
     #set score
+        #spaghetti dinner, bon appetite. confusion is x being vertical sequence 1 and y being horizontal sequence 2
+        #this conditional looks horrible too, refactor later, its 2am
     if len(seq1) > len(seq2):
-        for x in range(len(seq1)):
-            for y in range(len(seq2)):
-                score = max(score, matrix[x][y])
+        for x in range(len(matrix[0])):
+            for y in range(len(matrix)):
+                score = max(score, matrix[x][y+1])
+    else:
+        for x in range(len(matrix[0])):
+            for y in range(len(matrix)):
+                score = max(score, matrix[y][x])
     
 
     #set score location
-    for x in range(len(seq1)):
-        for y in range(len(seq2)):
+    for x in range(len(matrix)):
+        for y in range(len(matrix[0])):
             if matrix[x][y] == score:
                 scoreLocation.append((x, y))
 
@@ -73,8 +79,7 @@ def p_alignment(seq1, seq2, ):
     print(f"Optimal X Alignment: {optimalAlignment[0]}")
     print(f"Optimal Y Alignment: {optimalAlignment[1]}")
 
-    #print matrix
-    #print y sequence
+    #print matrix y sequence
     for i in range(len(seq2)):
         if i == 0:
             print('   ', end=' ')
