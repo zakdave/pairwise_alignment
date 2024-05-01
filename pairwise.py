@@ -1,7 +1,13 @@
 def p_alignment(seq1, seq2, ):
+    
     seq1, seq2 = list(seq1), list(seq2)
     scoreLocation, optimalAlignment = [], []
     score = 0
+
+    #return if either sequence contains a hyphen
+    if '-' in seq1 or '-' in seq2:
+        print("Error: Sequences cannot contain hyphens")
+        return
     
 
     # initialize matrix
@@ -95,18 +101,19 @@ def p_alignment(seq1, seq2, ):
     # print()
 
 print("Optimal PairwiseLocal Alignment Tool\n")
-#sequence1 = input("Enter the first sequence: ").upper()
-#sequence2 = input("Enter the second sequence: ").upper()
-
+sequence1 = input("Enter the first sequence: ").upper()
+sequence2 = input("Enter the second sequence: ").upper()
+p_alignment(sequence1, sequence2)
 #tests
-p_alignment('AAT', 'CAAG')
-p_alignment('SALTY', 'PLATE')
-p_alignment('ISALIGNED', 'THISLINE')
-p_alignment('ARE', 'REST')
-p_alignment('A', 'A')
-p_alignment('abcfghinopqrstuvwghijklmnopqrstuvwzyklmnopqrstuvwzyz', 'abcdejklmnopqyzabcdefghijklmnopqr')
-p_alignment('l;kqwercmvn.a,jemfhoqialksdfnal.skdfjl292830lkajsd.v,zmxlaiula', 'a1234098sldkjnaweroqpiuhas;f;asdr')
-p_alignment('a        a', 'a       a')
+# p_alignment('AAT', 'CAAG')
+# p_alignment('SALTY', 'PLATE')
+# p_alignment('ISALIGNED', 'THISLINE')
+# p_alignment('ARE', 'REST')
+# p_alignment('A', 'A')
+# p_alignment('abcfghinopqrstuvwghijklmnopqrstuvwzyklmnopqrstuvwzyz', 'abcdejklmnopqyzabcdefghijklmnopqr')
+# p_alignment('l;kqwercmvn.a,jemfhoqialksdfnal.skdfjl292830lkajsd.v,zmxlaiula', 'a1234098sldkjnaweroqpiuhas;f;asdr')
+# p_alignment('a        a', 'a       a')
+# p_alignment('asdf-', 'asdf-')
 
 
 
